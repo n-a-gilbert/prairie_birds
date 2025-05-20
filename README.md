@@ -9,4 +9,7 @@ Grassland species are one of the most severely declining groups of birds, largel
  
 ## Repository Directory
 
-### Scripts
+### code
+### data
+### figures
+### results
