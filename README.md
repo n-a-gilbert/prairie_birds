@@ -11,6 +11,14 @@ Grassland species are one of the most severely declining groups of birds, largel
 
 ### code
  * [figure_01.R](./code/figure_01.R) Create Figure 1 (study area map)
+ * [figure_02.R](./code/figure_02.R) Create Figure 2 (trend estimates)
+ * [figure_03.R](./code/figure_03.R) Create Figure 3 (effects of ecological covariates on occurrence and trends)
+ * [figure_04.R](./code/figure_04.R) Create Figure 4 (species heatmap showing covariate effects)
+ * [figure_s01_s03_s05_s08.R](./code/figure_s01_s03_s05_s08.R) Create Figures S01, S03, S05, S08
+ * [figure_s02_s04_s06_s09.R](./code/figure_s02_s04_s06_s09.R) Create Figures S02, S04, S06, S09
+ * [figure_s07.R](./code/figure_s07.R) Create Figure S07
+ * [format_data_fit_model.R](./code/format_data_fit_model.R) Code to format data and fit multispecies occupancy model using Nimble
+ * [table_s01.R](./code/table_s01.R) Create Table S01
 ### data
 ### figures
 ### results
