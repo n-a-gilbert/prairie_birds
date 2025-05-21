@@ -67,8 +67,8 @@ Grassland species are one of the most severely declining groups of birds, largel
  * [figure_s09.png](./figures/figure_s09.png) Figure S9   
 ### results
  * [prairie_bird_trends_global2025-02-28.RData](./results/prairie_bird_trends_global2025-02-28.RData) Model information and model output. RData with the following objects:
-  * constants: constants (loop control, indices) for model
-  * data: data used to fit model
-  * out: model output with posterior distributions of model parameters
-  * settings: MCMC settings used to fit model
-  * model_code: Nimble model code 
+   * constants: constants (loop control, indices) for model
+   * data: data used to fit model
+   * out: model output with posterior distributions of model parameters
+   * settings: MCMC settings used to fit model
+   * model_code: Nimble model code 
