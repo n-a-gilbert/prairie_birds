@@ -13,7 +13,8 @@ sp_key <- readr::read_csv(here::here("data/sp_key.csv"))
 
 # format data as we did in analysis to get unscaled covariate values
 # read in bird data; contains columns for the focal covariates as well
-d <- readr::read_csv(here::here("data/mn_prairie_bird_data_clean.csv"))
+d <- readr::read_csv(here::here("data/mn_prairie_bird_data_clean.csv")) |> 
+  dplyr::filter(!is.na(site))
 
 # retain species detected on at least 3% of surveys
 sp_to_select <- d |> 
