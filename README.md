@@ -50,6 +50,25 @@ Grassland species are one of the most severely declining groups of birds, largel
    | sp | double | species index used in model |
    | code | character | 4-letter species code |
    | common | character | species common name |
- * 
+   
 ### figures
+ * [figure_01.png](./figures/figure_01.png) Figure 1
+ * [figure_02.png](./figures/figure_02.png) Figure 2
+ * [figure_03.png](./figures/figure_03.png) Figure 3
+ * [figure_04.png](./figures/figure_04.png) Figure 4
+ * [figure_s01.png](./figures/figure_s01.png) Figure S1
+ * [figure_s02.png](./figures/figure_s02.png) Figure S2
+ * [figure_s03.png](./figures/figure_s03.png) Figure S3
+ * [figure_s04.png](./figures/figure_s04.png) Figure S4
+ * [figure_s05.png](./figures/figure_s05.png) Figure S5
+ * [figure_s06.png](./figures/figure_s06.png) Figure S6
+ * [figure_s07.png](./figures/figure_s07.png) Figure S7
+ * [figure_s08.png](./figures/figure_s08.png) Figure S8
+ * [figure_s09.png](./figures/figure_s09.png) Figure S9   
 ### results
+ * [prairie_bird_trends_global2025-02-28.RData](./results/prairie_bird_trends_global2025-02-28.RData) Model information and model output. RData with the following objects:
+  * constants: constants (loop control, indices) for model
+  * data: data used to fit model
+  * out: model output with posterior distributions of model parameters
+  * settings: MCMC settings used to fit model
+  * model_code: Nimble model code 
