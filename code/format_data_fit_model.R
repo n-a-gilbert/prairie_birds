@@ -24,7 +24,7 @@ z_info <- d |>
   dplyr::mutate(sp = tolower(sp)) |> 
   dplyr::filter(sp %in% sp_to_select) |> 
   dplyr::select(site, point, year, area, ratio, open, anom, sp) |> 
-  # critical line here - we are narrowing down to point-species-year combiations (combos we estimate z, aka latent occurence state, for)
+  # critical line here - we are narrowing down to point-species-year combinations (combos we estimate z, aka latent occurrence state, for)
   dplyr::distinct() |> 
   dplyr::group_by(sp) |> 
   # create species index
@@ -50,7 +50,7 @@ y_info <- d |>
   # create species index
   dplyr::mutate(sp_y = dplyr::cur_group_id()) |> 
   dplyr::group_by(obs) |>
-  # create observer idnex
+  # create observer index
   dplyr::mutate(obs_y = dplyr::cur_group_id()) |> 
   # link the bird data to the "z state"
   dplyr::full_join(
@@ -63,7 +63,7 @@ y_info <- d |>
 # create design matrix for covariates for occurrence
 x <- z_info |> 
   dplyr::select(open, area, ratio, anom, year) |> 
-  tibble::add_column(int = 1) |> 
+  tibble::add_column(int = 1) |>  # column of repeated 1s for the intercept
   dplyr::mutate(anom = as.numeric(scale(anom)),
                 open = as.numeric(scale(open)), 
                 ratio = as.numeric(scale(ratio)),
@@ -85,7 +85,7 @@ x <- z_info |>
 
 # create design matrix for covariates for detection
 w <- y_info |> 
-  tibble::add_column(int = 1) |> 
+  tibble::add_column(int = 1) |> # column of repeated 1s for the intercept
   dplyr::select(int, date, start) |> 
   dplyr::mutate(date = as.numeric(scale(date)),
                 start = as.numeric(scale(start))) |> 
