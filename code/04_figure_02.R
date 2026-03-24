@@ -6,16 +6,26 @@ library(MCMCvis)
 library(MetBrewer)
 library(ggh4x)
 
-load(here::here("results/prairie_bird_trends_global2025-02-28.RData"))
+dat_tab <- tibble(
+  habitat = c(   "pgrass_250", "pgrass_250", "pgrass_3000", "pgrass_3000", "ed_250",   "ed_250",  "ed_3000",  "ed_3000"), 
+  tmp_season = c("tanom_br",    "tanom_nb",   "tanom_br",   "tanom_nb",    "tanom_br", "tanom_nb", "tanom_br","tanom_nb"),
+  prcp_season = c("panom_br",    "panom_nb",   "panom_br",   "panom_nb",    "panom_br", "panom_nb", "panom_br","panom_nb")) |> 
+  dplyr::mutate(rowid = dplyr::row_number())
+
+load(here::here("results/01_pgrass_250_tanom_br_panom_br.RData"))
 
 sp_key <- readr::read_csv(here::here("data/sp_key.csv"))
 
-param_key <- tibble::tibble(
-  param = 1:12,
-  name = c("intercept", "yr", "anom", "area", "open", "ratio",
-           "area.ratio",
-           "anom.yr", "area.yr", "open.yr", "ratio.yr",
-           "area.ratio.yr"))
+i <- 1
+
+param_key <- tibble(
+  param = 1:8, 
+  name = c("intercept", "yr", "tanom", "panom", "habitat",
+           "tanom.yr", "panom.yr", "habitat.yr")) |> 
+  tibble::add_column(hab_name = dat_tab[[i, 'habitat']],
+                     tmp_season = dat_tab[[i, 'tmp_season']],
+                     prcp_season = dat_tab[[i, 'prcp_season']])
+
 
 betas <- MCMCvis::MCMCsummary( out, params = "beta", probs = c(0.025, 0.160, 0.840, 0.975))
 
@@ -124,3 +134,31 @@ sp_trends |>
     decline95 = sum(decline95), 
     increase68 = sum(increase68), 
     increase95 = sum(increase95)) |> mutate(across(no_trend:increase95, function(x) round(x/33, 2)))
+
+post <- MCMCvis::MCMCpstr( out, params = "mu_beta", type = "chains")[[1]] |> 
+  tibble::as_tibble(rownames = "param") |> 
+  tidyr::pivot_longer(dplyr::starts_with("V"), names_to = "iter", values_to = "value") |> 
+  dplyr::mutate( across( param:iter, function(x) readr::parse_number( x ))) |> 
+  dplyr::left_join(param_key) |> 
+  dplyr::select(-param) |> 
+  tidyr::pivot_wider(names_from = name, values_from = value) |> 
+  dplyr::select(iter, intercept, yr )
+
+post |> 
+  dplyr::cross_join(
+    tibble::tibble(yr.sc = c(min(data$x[,2]), max(data$x[,2])))
+  ) |> 
+  dplyr::mutate( psi = plogis( intercept + yr * yr.sc)) |> 
+  dplyr::mutate(yr.name = ifelse(yr.sc > 0, "last", "first")) |> 
+  dplyr::select(iter, yr.name, psi) |> 
+  tidyr::pivot_wider(names_from = yr.name, values_from = psi) |> 
+  dplyr::mutate(diff = ( last - first) / abs(first)) |> 
+  dplyr::summarise( mean = mean(diff), 
+                    l95 = quantile(diff, c(0.025)), 
+                    u95 = quantile(diff, c(0.975)))
+
+post |> 
+  dplyr::summarise( mean = mean(yr), 
+                    l95 = quantile(yr, c(0.025)), 
+                    u95 = quantile(yr, c(0.975)))
+
