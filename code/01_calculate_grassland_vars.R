@@ -58,12 +58,13 @@ metrics3000 <- buff_3000 |>
   dplyr::select(site.point, pgrass_3000, ed_3000) 
 
 vars <- dplyr::left_join(metrics250, metrics3000) |> 
-  dplyr::mutate(across(c(ed_250, ed_3000), function(x) ifelse(is.na(x), 0, x)))
+  dplyr::mutate(across(c(ed_250, ed_3000), function(x) ifelse(is.na(x), 0, x))) |> 
+  dplyr::rename(point = site.point)
+
+write_csv(vars, here::here("data/habitat_vars.csv"))
 
 cleandat <- readr::read_csv(here::here("data/mn_prairie_bird_data_clean.csv"))
 
 cleandat |> 
-  dplyr::left_join(
-    dplyr::rename( vars, point = site.point)) |> 
-  readr::write_csv(here::here("data/mn_prairie_bird_data_clean_2026_02_16.csv"))
+  left_join(vars) 
 

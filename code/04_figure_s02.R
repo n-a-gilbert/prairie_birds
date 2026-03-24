@@ -10,10 +10,13 @@ library(reshape2)
 anomaly <- readr::read_csv(here::here("data/weather_anomaly.csv")) |> 
   dplyr::rename(point = siteID)
 
+hab <- readr::read_csv(here::here("data/habitat_vars.csv"))
+
 # read in bird data; contains columns for the focal covariates as well
-d <- readr::read_csv(here::here("data/mn_prairie_bird_data_clean_2026_02_16.csv")) |> 
+d <- readr::read_csv(here::here("data/mn_prairie_bird_data_clean.csv")) |> 
   dplyr::filter(!is.na(site)) |> 
-  dplyr::left_join(anomaly)
+  dplyr::left_join(anomaly) |> 
+  dplyr::left_join(hab)
 
 sp_to_select <- d |> 
   dplyr::mutate(sp = tolower(sp)) |> 
