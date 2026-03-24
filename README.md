@@ -89,15 +89,19 @@ Grassland birds are among the most rapidly declining groups of species, largely 
  * [figure_s02.png](./figures/figure_s02.png) Figure S2
  * [figure_s03.png](./figures/figure_s03.png) Figure S3
  * [figure_s04.png](./figures/figure_s04.png) Figure S4
- * [figure_s05.png](./figures/figure_s05.png) Figure S5
- * [figure_s06.png](./figures/figure_s06.png) Figure S6
- * [figure_s07.png](./figures/figure_s07.png) Figure S7
- * [figure_s08.png](./figures/figure_s08.png) Figure S8
- * [figure_s09.png](./figures/figure_s09.png) Figure S9   
+ 
 ### results
- * [prairie_bird_trends_global2025-02-28.RData](./results/prairie_bird_trends_global2025-02-28.RData) Model information and model output. RData with the following objects:
+ * [01_pgrass_250_tanom_br_panom_br.RData](./results/01_pgrass_250_tanom_br_panom_br.RData) Model information and model output for model with pgrass (250 m) and breeding-season climate variables. RData with the following objects:
    * constants: constants (loop control, indices) for model
    * data: data used to fit model
    * out: model output with posterior distributions of model parameters
    * settings: MCMC settings used to fit model
    * model_code: Nimble model code 
+ * [02_pgrass_250_tanom_nb_panom_nb.RData](./results/02_pgrass_250_tanom_nb_panom_nb.RData) Model information and model output for model with pgrass (250 m) and nonbreeding-season climate variables
+ * [03_pgrass_3000_tanom_br_panom_br.RData](./results/03_pgrass_3000_tanom_br_panom_br.RData) Model information and model output for model with pgrass (3000 m) and breeding-season climate variables
+ * [04_pgrass_3000_tanom_nb_panom_nb.RData](./results/04_pgrass_3000_tanom_nb_panom_nb.RData) Model information and model output for model with pgrass (3000 m) and nonbreeding-season climate variables
+ * [05_ed_250_tanom_br_panom_br.RData](./results/05_ed_250_tanom_br_panom_br.RData) Model information and model output for model with edge density (250 m) and breeding-season climate variables
+ * [06_ed_250_tanom_nb_panom_nb.RData](./results/06_ed_250_tanom_nb_panom_nb.RData) Model information and model output for model with edge density (250 m) and nonbreeding-season climate variables
+ * [07_ed_3000_tanom_br_panom_br.RData](./results/07_ed_3000_tanom_br_panom_br.RData) Model information and model output for model with edge density (3000 m) and breeding-season climate variables
+ * [08_ed_3000_tanom_nb_panom_nb.RData](./results/08_ed_3000_tanom_nb_panom_nb.RData) Model information and model output for model with edge density (3000 m) and nonbreeding-season climate variables
+* [prairie_bird_trends_global_tanom_panom_br22026-02-01.RData](./results/prairie_bird_trends_global_tanom_panom_br22026-02-01.RData) Model information and model output for model with original covariates but quadratic effects of breeding-season climate variables to assess linear vs. quadratic effects
