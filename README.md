@@ -26,8 +26,21 @@ Grassland birds are among the most rapidly declining groups of species, largely 
  * [04_table_s01.R](./code/04_table_s01.R) Create Table S01
 ### data
  * [spatial](./data/spatial) Folder containing spatial data files
+   * [SPICE_contig_grass_NoHoles_20260213.shp](./data/spatial/SPICE_contig_grass_NoHoles_20260213.shp) Shapefile for contiguous grassland habitat (.cpg, .dbf, .prj, .sbn, .sbx, and .shx components also present in this folder)
    * [allsites_SPICE_20201228_multipart.shp](./data/spatial/allsites_SPICE_20201228_multipart.shp) Shapefile with reserve boundaries (.cpg, .dbf, .prj, .sbn, .sbx, and .shx components also present in this folder)
    * [ecs_provinces_of_mn_v99a.shp](./data/spatial/ecs_provinces_of_mn_v99a.shp) Shapefile with ecoregions of Minnesota (.cpg, .dbf, .prj, .sbn, .sbx, and .shx components also present in this folder)
+ * [MN_prairie_bird_data.xlsx] Grassland bird survey data (format received from collaborators); included here since it is used in scripts to calculate weather anomalies and habitat variables.
+ * [habitat_vars.csv](./data/habitat_vars.csv) Point-level habitat variables
+
+  | Column name | Type | Description |
+  |-------------|------|-------------|
+  | point | character | name of survey point nested within reserve |
+  | pgrass_250 | double | proportion grassland within 250 m of point |
+  | ed_250 | double | edge density (grassland/non-grassland edge) within 250 m of point |
+  | pgrass_3000 | double | proportion grassland within 3000 m of point |
+  | ed_3000 | double | edge density (grassland/non-grassland edge) within 3000 m of point |
+
+ * [list_of_data_lists3.RData](./data/list_of_data_lists3.RData) List of data lists for modeling. 8 top-level elements (1 for each model). Each element is a list of six, containing model constants (loop control, etc), data, model code, parameters monitored, initial value function, and model label.
  * [mn_prairie_bird_data_clean.csv](./data/mn_prairie_bird_data_clean.csv) Grassland bird survey data. Data dictionary provided below.
 
   | Column name | Type | Description |
@@ -55,6 +68,17 @@ Grassland birds are among the most rapidly declining groups of species, largely 
    | sp | double | species index used in model |
    | code | character | 4-letter species code |
    | common | character | species common name |
+
+ * [weather_anomaly.csv](./data/weather_anomaly.csv) Weather anomalies
+
+   | Column name | Type | Meaning |
+   |-------------|------|---------|
+   | point | character | name of survey point nested within reserve |
+   | year | double | year |
+   | panom_br | double | breeding season (May and June) precipitation anomaly |
+   | tanom_br | double | breeding season (May and June) temperature anomaly |
+   | panom_nb | double | nonbreeding season (Jan-Apr) precipitation anomaly |
+   | tanom_nb | double | nonbreeding season (Jan-Apr) temperature anomaly |
    
 ### figures
  * [figure_01.png](./figures/figure_01.png) Figure 1
