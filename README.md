@@ -29,7 +29,7 @@ Grassland birds are among the most rapidly declining groups of species, largely 
    * [SPICE_contig_grass_NoHoles_20260213.shp](./data/spatial/SPICE_contig_grass_NoHoles_20260213.shp) Shapefile for contiguous grassland habitat (.cpg, .dbf, .prj, .sbn, .sbx, and .shx components also present in this folder)
    * [allsites_SPICE_20201228_multipart.shp](./data/spatial/allsites_SPICE_20201228_multipart.shp) Shapefile with reserve boundaries (.cpg, .dbf, .prj, .sbn, .sbx, and .shx components also present in this folder)
    * [ecs_provinces_of_mn_v99a.shp](./data/spatial/ecs_provinces_of_mn_v99a.shp) Shapefile with ecoregions of Minnesota (.cpg, .dbf, .prj, .sbn, .sbx, and .shx components also present in this folder)
- * [MN_prairie_bird_data.xlsx] Grassland bird survey data (format received from collaborators); included here since it is used in scripts to calculate weather anomalies and habitat variables.
+ * [MN_prairie_bird_data.xlsx](./data/MN_prairie_bird_data.xlsx) Grassland bird survey data (format received from collaborators); included here since it is used in scripts to calculate weather anomalies and habitat variables.
  * [habitat_vars.csv](./data/habitat_vars.csv) Point-level habitat variables
 
   | Column name | Type | Description |
